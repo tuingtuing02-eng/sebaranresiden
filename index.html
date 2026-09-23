@@ -134,15 +134,17 @@
     </div>
   </section>
 
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Seluruh Program Studi (30 Prodi)</h2>
+    <div class="chart-holder" style="height:820px;"><canvas id="chartProdiAll"></canvas></div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h2>Seluruh Provinsi (34 Provinsi)</h2>
+    <div class="chart-holder" style="height:760px;"><canvas id="chartProvinsi"></canvas></div>
+  </div>
+
   <section class="grid">
-    <div class="card tall">
-      <h2>10 Program Studi Spesialis Terbanyak</h2>
-      <div class="chart-holder"><canvas id="chartProdi"></canvas></div>
-    </div>
-    <div class="card tall">
-      <h2>10 Provinsi Terbanyak</h2>
-      <div class="chart-holder"><canvas id="chartProvinsi"></canvas></div>
-    </div>
     <div class="card">
       <h2>Distribusi Status Pembiayaan</h2>
       <div class="chart-holder"><canvas id="chartBiaya"></canvas></div>
@@ -164,16 +166,16 @@ try {
   Chart.defaults.color = textColor;
   Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
-  // 1. Program Studi (horizontal bar)
-  new Chart(document.getElementById('chartProdi'), {
+  // 1. Seluruh Program Studi (horizontal bar, semua 30)
+  new Chart(document.getElementById('chartProdiAll'), {
     type: 'bar',
     data: {
-      labels: ['Gizi Klinik','Pulmonologi & Resp.','Anestesiologi & TI','Jantung & Pemb. Darah','Kesehatan Anak','Obstetri & Ginekologi','Ilmu Bedah','Neurologi','Radiologi','Penyakit Dalam'],
+      labels: ["Ilmu Penyakit Dalam","Radiologi","Neurologi","Ilmu Bedah","Ilmu Kesehatan Anak","Obstetri dan Ginekologi","Ilmu Penyakit Jantung dan Pembuluh Darah","Anestesiologi dan Terapi Intensif","Pulmonologi dan Kedokteran Respirasi","Gizi Klinik","Orthopaedi dan Traumatologi","Ilmu Patologi Klinik","Ilmu Kedokteran Jiwa","Ilmu Kesehatan Mata","Dermatologi dan Venereologi","Ilmu Kedokteran Fisik dan Rehabilitasi","Ilmu Kesehatan THT-BKL","SP2 - Anestesiologi dan Terapi Intensif","Patologi Anatomi","Mikrobiologi Klinik","SP2 - Ilmu Penyakit Dalam","Bedah Anak","Urologi","Bedah Saraf","Bedah Toraks Kardiak dan Vaskular","SP2 - Bedah","Forensik dan Medikolegal","SP2 - Obstetri dan Ginekologi","SP2 - Orthopaedi dan Traumatologi","SP2 - Dermatologi, Venerologi, dan Estetika"],
       datasets: [{
-        data: [98,99,105,107,116,116,122,133,134,202],
+        data: [202,134,133,122,116,116,107,105,99,98,87,87,87,86,85,84,84,47,45,40,39,38,33,31,23,23,18,9,3,1],
         backgroundColor: '#3b82f6',
         borderRadius: 4,
-        barThickness: 18
+        barThickness: 16
       }]
     },
     options: {
@@ -183,21 +185,21 @@ try {
       plugins: { legend: { display: false } },
       scales: {
         x: { grid: { color: gridColor }, beginAtZero: true },
-        y: { grid: { display: false } }
+        y: { grid: { display: false }, ticks: { font: { size: 10.5 } } }
       }
     }
   });
 
-  // 2. Provinsi (horizontal bar)
+  // 2. Seluruh Provinsi (horizontal bar, 34 provinsi, terbanyak di atas)
   new Chart(document.getElementById('chartProvinsi'), {
     type: 'bar',
     data: {
-      labels: ['Gorontalo','Maluku Utara','Papua Barat','Kalimantan Timur','Papua','Sulawesi Barat','Sulawesi Tengah','Sulawesi Tenggara','Sulawesi Selatan'],
+      labels: ["Sulawesi Selatan","Sulawesi Tenggara","Sulawesi Tengah","Sulawesi Barat","Papua","Kalimantan Timur","Papua Barat","Maluku Utara","Gorontalo","Nusa Tenggara Timur","Maluku","Jawa Barat","Nusa Tenggara Barat","DKI Jakarta","Sulawesi Utara","Kalimantan Selatan","Kalimantan Utara","Jawa Tengah","Jawa Timur","Kalimantan Tengah","Banten","Kalimantan Barat","Sumatera Utara","Bali","Aceh","Sumatera Selatan","Lampung","Bengkulu","Riau","Sumatera Barat","Kepulauan Bangka Belitung","Jambi","Kepulauan Riau","DI Yogyakarta"],
       datasets: [{
-        data: [47,53,57,66,82,87,167,189,746],
+        data: [746,189,167,87,82,66,57,53,47,42,42,42,39,33,32,26,23,21,21,17,16,15,12,10,9,8,7,7,7,5,4,4,3,2],
         backgroundColor: '#10b981',
         borderRadius: 4,
-        barThickness: 18
+        barThickness: 14
       }]
     },
     options: {
@@ -207,7 +209,7 @@ try {
       plugins: { legend: { display: false } },
       scales: {
         x: { grid: { color: gridColor }, beginAtZero: true },
-        y: { grid: { display: false } }
+        y: { grid: { display: false }, ticks: { font: { size: 10.5 } } }
       }
     }
   });
